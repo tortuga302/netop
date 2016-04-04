@@ -1,0 +1,53 @@
+<div>sdssdsd</div>
+    <table>
+        <thead>
+            <tr>
+                <td>
+
+                    #No
+
+
+                </td>
+                <td>
+
+                    Book name
+                </td>
+                <td>
+
+                    Author Name
+                </td>
+                <td>
+
+                    Number of pages
+                </td>
+                <td>
+                    Category
+                </td>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <input type="number" value="{{rowdata.id}}" required readOnly="idDisabled">
+            </td>
+            <td>
+                <input type="string" value="{{rowdata.name}}" required>
+
+            </td>
+            <td>
+                <input type="string" value="{{rowdata.author}}" required>
+            </td>
+            <td>
+                <input type="number" value="{{rowdata.pages}}" required>
+            </td>
+            <td>
+                <input type="string" value="{{ rowdata.type }}" required>
+            </td>
+
+
+        </tr>
+
+    </table>
+
+
+    <input type="button" value="save">
+</div>

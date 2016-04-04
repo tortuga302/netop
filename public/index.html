@@ -1,0 +1,105 @@
+<!doctype html>
+<html ng-app="main">
+
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta charset="utf-8">
+    <title>LibN</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/directives/update.js"></script>
+
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+
+</head>
+
+<body>Virtual library
+    <div ng-controller="mainCtrl as mc">
+        <!--<div>
+            <update-book id="updateBook" ng-show="updateVisible" rowdata="selectedRow"></update-book>
+        </div>-->
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                        #No
+                        </a>
+
+                    </td>
+                    <td>
+                        <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                        Book name </a>
+                    </td>
+                    <td>
+                        <a href="#" ng-click="sortType = 'author'; sortReverse = !sortReverse">
+                        Author Name </a>
+                    </td>
+                    <td>
+                        <a href="#" ng-click="sortType = 'pages'; sortReverse = !sortReverse">
+                        Number of pages </a>
+                    </td>
+                    <td>
+                        <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse">
+                        Category </a>
+                    </td>
+                </tr>
+            </thead>
+            <tr ng-repeat="p in books | orderBy:sortType:sortReverse" ng-mouseover="onOver=true" ng-mouseout="onOver=false">
+                <td>
+                    <input type="number" value="{{p.id}}" required readOnly="idDisabled">
+                </td>
+                <td>
+                    <input type="string" ng-model="p.name" required>
+
+                </td>
+                <td>
+                    <input type="string" ng-model="p.author" required>
+                </td>
+                <td>
+                    <input type="number" ng-model="p.pages" required>
+                </td>
+                <td>
+                    <input type="string" ng-model=" p.type " required>
+                </td>
+
+                <td ng-hide="!onOver">
+                    <input id="btnEdit{{p.id}}" type="button" class="edit" ng-click="onBtnUpdate(p.id-1)">
+                </td>
+            </tr>
+
+        </table>
+        <br/>
+        <div id="nb" ng-show="nbVisible">
+            <table>
+                <tr>
+                    <td>
+                        <input type="number" value="{{books[books.length-1].id+1}}" required readOnly="idDisabled"> </td>
+                    <td>
+                        <input type="string" ng-model="newBookData.name" required> </td>
+                    <td>
+                        <input type="string" ng-model="newBookData.author" required> </td>
+                    <td>
+                        <input type="number" ng-model="newBookData.pages" required> </td>
+                    <td>
+                        <input type="string" ng-model="newBookData.type" required> </td>
+                    <td>
+                        <input type="button" value="Save" ng-click="onBtnSaveNewBook()">
+                        <input type="button" value="Cancel" ng-click="onBtnCancel()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="button" value="Add new book" ng-click="onBtnInsert()">
+
+    </div>
+</body>
+
+</html>
